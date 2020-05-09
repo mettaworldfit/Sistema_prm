@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+# Activar rewrite
+RewriteEngine on
+
+ErrorDocument 404 http://localhost/prm/?controller=error&action=index
+
+</IfModule>

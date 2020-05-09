@@ -1,0 +1,54 @@
+/* SESION */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.error{
+    color: red;
+}
+
+#sesion {
+    background: rgba(0, 0, 0, .2);
+    width: 420px;
+    height: 410px;
+    margin: 0 auto;
+    margin-top: 12em;
+    display: flex;
+    justify-content: center;
+}
+
+#login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#login input {
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 0;
+    padding: 20px 15px;
+}
+
+#login button {
+    width: 100%;
+}
+
+#login input::-webkit-input-placeholder {
+    color: white;
+}
+
+a#recuperar {
+    color: white;
+    padding-top: 7px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.logo-login {
+    margin-bottom: 1.3em;
+}
+
