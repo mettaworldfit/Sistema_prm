@@ -2,7 +2,7 @@
   <h3><i class="fas fa-user"></i> Usuarios</h3>
 </div>
 
-
+<?php include 'pagination.php'; ?>
 
 <div class="table-title contenedor">
 
@@ -43,3 +43,5 @@
     </table>
   </div>
 </div>
+
+<?php include 'pagination.php'; ?>

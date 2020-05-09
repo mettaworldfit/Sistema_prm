@@ -10,7 +10,11 @@ class UsuariosController
     {
         if (isset($_SESSION['identity']) || isset($_SESSION['admin'])) {
 
-            $db = DataBase::connect();
+            $db = DataBase::connect();  // Conexión a la DB
+
+            $controller = $_GET['controller'];
+            $method = $_GET['action'];  
+
 
             $pagina = isset($_GET['pag']) ? (int) $_GET['pag'] : 0;
 
