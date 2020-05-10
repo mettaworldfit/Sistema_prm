@@ -1,5 +1,6 @@
 <?php
 
+
 class Help
 {
 
@@ -128,33 +129,55 @@ class Help
 
             $query = "SELECT *from personas_inscritas p inner join mesas_electorales m on p.idmesa = m.idmesa
             WHERE (select count(idpersona) from personas_inscritas where p.partido_perteneciente = '')";
-      
+
             $db = DataBase::connect();
             return $db->query($query);
         }
     }
 
-    public static function Verificar($idmesa,$posicion)
+    public static function Verificar($idmesa, $posicion)
     {
         $query = "SELECT count(idpersona) AS 'total' from personas_inscritas WHERE posicion_colegio = '$posicion' AND idmesa = '$idmesa'";
 
         $db = DataBase::connect();
         return $db->query($query);
-           
     }
 
+    // Verificar número de identidad electoral
+    
+    public static function Verificar_cedula($cedula)
+    {
+    
+        $query = "SELECT count(idpersona) as 'total' from personas_inscritas WHERE numero_de_identidad = '$cedula'";
+
+        $db = DataBase::connect();
+        return $db->query($query);
+    }
+
+    // Verificar posición de colegio electoral
+
+    public static function Verificar_posicion($colegio , $posicion)
+    {
+        $query = "SELECT count(p.idpersona) as 'total' from personas_inscritas p INNER JOIN  
+        mesas_electorales m ON p.idmesa = m.idmesa WHERE p.posicion_colegio = '$posicion' AND m.colegio_electoral = '$colegio'";
+
+        $db = DataBase::connect();
+        return $db->query($query);
+    }
 
     // -----------------------------
 
-    
-    public static function Cantidad_votos($respuesta){
+
+    public static function Cantidad_votos($respuesta)
+    {
         $query = "SELECT count(idpersona) AS 'total' from personas_inscritas WHERE ha_votado = '$respuesta'";
 
         $db = DataBase::connect();
         return $db->query($query);
     }
 
-    public static function Total_de_partido($partido, $colegio){
+    public static function Total_de_partido($partido, $colegio)
+    {
 
         $query = "SELECT count(p.idpersona) as 'total' from personas_inscritas p 
         INNER JOIN mesas_electorales m on p.idmesa = m.idmesa
@@ -162,9 +185,6 @@ class Help
 
         $db = DataBase::connect();
         return $db->query($query);
-
     }
-
-
 }
 

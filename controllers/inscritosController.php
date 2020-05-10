@@ -119,7 +119,71 @@ class InscritosController
     public function save()
     {
 
-      
+        if (isset($_SESSION['identity']) || isset($_SESSION['admin'])) {
+
+            if (isset($_POST['save'])) {
+
+                $result1 = Help::Verificar_cedula($_POST['cedula']);
+                $datos1 = $result1->fetch_object();
+                $identity_verify = $datos1->total;
+
+            if ($identity_verify == 0) {                   // Verificar si el número de identidad existe
+
+                $result = Help::Verificar_posicion($_POST['colegio'], $_POST['posicion']);
+                $datos = $result->fetch_object();
+                $position_verify = $datos->total;
+
+                if($position_verify == 0) :                // Verificar si la posición existe en la mesa 
+                    if($_POST['posicion'] != 0):
+                       
+                            $method = new Inscritos();
+
+                            $method->setPosicion($_POST['posicion']);
+                            $method->setNombre(ucwords($_POST['nombre']));
+                            $method->setApellidos(ucwords($_POST['apellidos']));
+                            $method->setCedula($_POST['cedula']);
+                            $method->setMesa($_POST['colegio']);
+                            $method->setPartido($_POST['partido']);
+                            $method->setTelefono($_POST['telefono']);
+                            $method->setCondicion($_POST['condicion']);
+    
+                            $result = $method->save();
+    
+                            if ($result) {
+                               
+                                ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-success'></i> Registro exítoso</h3></div> <?php
+                            };
+
+                            include "./includes/redirect.php";         // Volver atrás
+                        
+                    else:
+                        ?>
+                        <div class='contenedor text-center caption'>
+                        <h3><i class='fas fa-exclamation-circle text-danger'></i> Posición no permitida</h3>
+                        <p>Verificar que la posición no contega un valor nulo</p>
+                        </div>
+                        <?php
+
+                         include "./includes/redirect.php";         // Volver atrás
+                    endif;
+                else:
+                 
+                   ?> <h3 class='contenedor caption text-center'><i class='fas fa-exclamation-circle text-danger'></i>  Posición de padrón ocupada</h3> <?php
+                 
+                    include "./includes/redirect.php";         // Volver atrás
+
+                endif;
+
+            } else {
+                 
+                ?><h3 class='contenedor caption text-center'><i class='fas fa-exclamation-circle text-danger'></i> El número de identidad electoral ya existe !</h3><?php
+                                        
+                include "./includes/redirect.php";            // Volver atrás
+            }
+
+            }         
+       } 
+
     }
 
     public function delete()
