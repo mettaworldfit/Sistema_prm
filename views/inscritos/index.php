@@ -17,6 +17,8 @@
   <a class="btn btn-secondary btn-sm" href="?controller=inscritos&action=add">Inscribir</a>
 </div>
 
+<?php include 'paginacion.php' ?>
+
 <div class="table-title contenedor">
 
   <div class="scroll">
@@ -33,7 +35,7 @@
 
       </thead>
 
-      <?php while ($dato = $datos->fetch_object()) : ?>
+      <?php while ($dato = $registros->fetch_object()) : ?>
 
         <tbody>
 
@@ -63,3 +65,5 @@
     </table>
   </div>
 </div>
+
+<?php include 'paginacion.php' ?>

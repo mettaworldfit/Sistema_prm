@@ -17,8 +17,25 @@ class InscritosController
 
         if (isset($_SESSION['admin']) && isset($_SESSION['identity'])) {
 
-            $personas = new Inscritos;
-            $datos = $personas->showAll();
+            $db = DataBase::connect(); // Conexión DB
+
+            $controller = $_GET['controller'];
+            $method = $_GET['action'];
+
+            $pagina = isset($_GET['pag']) ? (int) $_GET['pag'] : 0;
+
+            $por_pagina = 1200; // Registros por página
+
+            $inicio = ($pagina > 1) ? ($pagina * $por_pagina) - $por_pagina : 0;
+
+            // Personas inscritas en un colegio
+            $registros = $db->query("SELECT SQL_CALC_FOUND_ROWS *FROM personas_inscritas p INNER JOIN  
+            mesas_electorales m ON p.idmesa = m.idmesa ORDER BY p.apellidos ASC LIMIT $inicio,$por_pagina");
+
+            $total_registros = $db->query("SELECT FOUND_ROWS() AS 'total'");
+            $total_registros = $total_registros->fetch_object()->total;
+
+            $num_pagina = ceil($total_registros / $por_pagina); // Número de páginas
 
             require_once './views/inscritos/index.php';
         } else {

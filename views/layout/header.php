@@ -82,7 +82,7 @@
                         <?php endif; ?>
 
                         <?php if (isset($_SESSION['admin']) && isset($_SESSION['identity'])) : ?>
-                        <li><a href="?controller=inscritos&action=index">Inscritos</a></li>
+                        <li><a href="?controller=inscritos&action=index&pag=1">Inscritos</a></li>
                         <?php endif; ?>
 
                         <li><a href="?controller=home&action=config">Configuración</a></li>
