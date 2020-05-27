@@ -235,7 +235,7 @@ class InscritosController
 
                     $inscritos->votar($request, $id);
 
-                    ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-success'></i> Voto registado</h3></div> <?php
+                    ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-success'></i> Voto registrado</h3></div> <?php
                     include "./includes/redirect.php";            // Volver atrás
 
                 } else {

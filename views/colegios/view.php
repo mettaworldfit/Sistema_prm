@@ -83,12 +83,6 @@
 
             </form>
 
-            <form class="pr-1" method="POST" action="?controller=inscritos&action=voto">
-              <input type="hidden" name="cancelar" value="No">
-              <input type="hidden" name="id" value="<?= $dato->idpersona ?>">
-              <button class="btn-del" type="submit"><i class="fas fa-vote-yea"></i></button>
-            </form>
-
             <a class="pr-1" href="?controller=inscritos&action=view&id=<?= $dato->idpersona ?>"><i class="fas fa-eye"></i></a>
 
           </div>
