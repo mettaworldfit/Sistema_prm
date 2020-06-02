@@ -116,7 +116,7 @@ class ResultadosController
             $datos2 = $colegio->Total_votos_por_partido('prm');
             $datos3 = $colegio->Total_votos_por_partido('pld');
 
-            // Porcentaje de personas que votaron JCE [Primer boletín]
+            // Porcentaje de personas que votaron JCE 
 
             $inscritos = Help::Total_inscritos();
             $votos = Help::JCE_votos();

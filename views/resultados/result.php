@@ -63,30 +63,5 @@
 
             </tbody>
         </table>
-    </div> <br>
-
-    <div class="contenedor">
-
-        <table>
-            <tbody>
-
-
-                <tr>
-                    <?php $datos = Help::JCE_AVG_partido("prm");
-                    while ($dato = $datos->fetch_object()) : ?>
-                        <td class="detail">Votos por colegios PRM y Aliados</td>
-                        <td class="important"><?= $dato->avg ?>.0 Prom</td>
-                    <?php endwhile; ?>
-                </tr>
-                <tr>
-                    <?php $datos = Help::JCE_AVG_partido("pld");
-                    while ($dato = $datos->fetch_object()) : ?>
-                        <td class="detail">Votos por colegios PLD y Aliados</td>
-                        <td class="important"><?= $dato->avg ?>.0 Prom</td>
-                    <?php endwhile; ?>
-                </tr>
-
-            </tbody>
-        </table>
     </div> 
 </div>
