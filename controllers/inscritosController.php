@@ -129,6 +129,53 @@ class InscritosController
         }
     }
 
+    public function view()
+    {
+        if (isset($_SESSION['admin']) || isset($_SESSION['identity'])) {
+
+            $colegios = new Colegios();
+            $datos2 = $colegios->getAll('mesas_electorales');
+
+            require_once "./views/inscritos/view.php";
+        } else {
+            Help::unRegister();
+        }
+    }
+
+    public function voto()
+    {
+        if (isset($_SESSION['identity']) || isset($_SESSION['admin'])) {
+
+            if (isset($_POST)) {
+
+                $inscritos = new Inscritos();
+
+                if (isset($_POST['votar'])) {
+
+                    $id = $_POST['id'];
+                    $request = $_POST['votar'];
+
+                    $inscritos->votar($request, $id);
+
+                    ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-success'></i> Voto registrado</h3></div> <?php
+                    include "./includes/redirect.php";            // Volver atrás
+
+                } else {
+
+                    $id = $_POST['id'];
+                    $request = $_POST['cancelar'];
+
+                    $inscritos->votar($request, $id);
+
+                    ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-danger'></i> Voto Anulado</h3></div> <?php
+                    include "./includes/redirect.php";            // Volver atrás
+                }
+             
+               
+            }
+        }
+    }
+
     public function search()
     {
         if (isset($_SESSION['identity']) || isset($_SESSION['admin'])) {
@@ -203,53 +250,6 @@ class InscritosController
                     </div>
 <?php
                 }
-            }
-        }
-    }
-
-    public function view()
-    {
-        if (isset($_SESSION['admin']) || isset($_SESSION['identity'])) {
-
-            $colegios = new Colegios();
-            $datos2 = $colegios->getAll('mesas_electorales');
-
-            require_once "./views/inscritos/view.php";
-        } else {
-            Help::unRegister();
-        }
-    }
-
-    public function voto()
-    {
-        if (isset($_SESSION['identity']) || isset($_SESSION['admin'])) {
-
-            if (isset($_POST)) {
-
-                $inscritos = new Inscritos();
-
-                if (isset($_POST['votar'])) {
-
-                    $id = $_POST['id'];
-                    $request = $_POST['votar'];
-
-                    $inscritos->votar($request, $id);
-
-                    ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-success'></i> Voto registrado</h3></div> <?php
-                    include "./includes/redirect.php";            // Volver atrás
-
-                } else {
-
-                    $id = $_POST['id'];
-                    $request = $_POST['cancelar'];
-
-                    $inscritos->votar($request, $id);
-
-                    ?> <div class='contenedor text-center caption'><h3><i class='far fa-smile-beam text-danger'></i> Voto Anulado</h3></div> <?php
-                    include "./includes/redirect.php";            // Volver atrás
-                }
-             
-               
             }
         }
     }

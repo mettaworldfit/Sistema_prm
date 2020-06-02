@@ -26,6 +26,7 @@
             <div class="col-sm-3 col-config">
                 <h4><i class="fas fa-poll"></i> Votaciones</h4>
                 <ul>
+                    <li><a href="#">Registrar votos</a></li>
                     <li><a href="?controller=resultados&action=index">Registro de actas</a></li>
                     <li><a href="?controller=resultados&action=result">Resultados JCE</a></li>
                 </ul>
