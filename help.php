@@ -186,5 +186,22 @@ class Help
         $db = DataBase::connect();
         return $db->query($query);
     }
+
+    public static function JCE_votos()
+    {
+        $query = "SELECT SUM(votos) AS 'total' from resultados_finales";
+
+        $db = DataBase::connect();
+        return $db->query($query);
+    }
+
+    public static function JCE_votos_partido($partido)
+    {
+        $query = "SELECT SUM(votos) AS 'total' from resultados_finales WHERE partido = '$partido'";
+
+        $db = DataBase::connect();
+        return $db->query($query);
+    }
+
 }
 

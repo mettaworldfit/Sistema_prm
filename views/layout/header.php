@@ -56,7 +56,7 @@
         <div class="contenido">
             <header class="site-header contenedor clearfix ">
                 <div class="logo">
-                    <h2><i class="fas fa-user"></i> <?= $_SESSION['identity']->nombre ?></h2>
+                  <a href="<?=base_url?>"><h2><i class="fas fa-user"></i> <?= $_SESSION['identity']->nombre ?></h2></a>  
                 </div>
 
                 <div class="menu-movil">

@@ -2,7 +2,6 @@
     <section id="sesion">
     
         <form method="post" action="?controller=usuarios&action=login" id="login">
-        <h3>Iniciar sesión</h3> <br>
 
         <img class="logo-login" src="<?=base_url?>public/img/prm.ico" width="120" height="120" alt="">
 

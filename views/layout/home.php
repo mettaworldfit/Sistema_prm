@@ -2,7 +2,7 @@
     <div class="form-group">
 
         <form class="input-group" action="<?= base_url ?>?controller=inscritos&action=search" method="post">
-            <input type="text" name="search" placeholder="Buscar Por Nombre/ID" class="form-control" required />
+            <input type="text" name="search" placeholder= "Buscar por nombre / ID" class="form-control" required />
             <input class="btn btn-primary" type="submit" value="Buscar">
         </form>
 

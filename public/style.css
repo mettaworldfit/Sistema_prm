@@ -406,7 +406,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin: 0 auto;
-    text-align: center;
+    /* text-align: center; */
 }
 
 table th td {
@@ -421,13 +421,14 @@ thead th {
     font-family: 'Cabin', sans-serif;
     font-size: 11px;
     height: 2.8em;
+    padding: 0 10px;
 }
 
 tbody td {
     border-bottom: 1px solid #ececec;
     height: 2.8em;
     font-size: 11px;
-    padding-left: 0px;
+    padding: 0 10px;
 
 }
 

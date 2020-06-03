@@ -22,15 +22,18 @@
             </div>
         <?php endif; ?>
 
-        <?php if (isset($_SESSION['admin'])) : ?>
+       
             <div class="col-sm-3 col-config">
                 <h4><i class="fas fa-poll"></i> Votaciones</h4>
                 <ul>
-                    <li><a href="?controller=resultados&action=index">Registro de actas</a></li>
-                    <li><a href="?controller=resultados&action=result">Resultados JCE</a></li>
+                    <li><a href="#">Registrar votos</a></li>
+                    <?php if (isset($_SESSION['admin'])) : ?>
+                        <li><a href="?controller=resultados&action=index">Registro de actas</a></li>
+                        <li><a href="?controller=resultados&action=result">Resultados JCE</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
-        <?php endif; ?>
+        
     </div>
 
 </div>
